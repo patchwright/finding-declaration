@@ -1,0 +1,18 @@
+{
+  "$schema": "https://raw.githubusercontent.com/patchwright/finding-declaration/v0.1/schema.json",
+  "experiment": "demo",
+  "findings": [
+    {
+      "finding_id": "repl_priming",
+      "claim": "Social priming replicates in direction but attenuated.",
+      "verdict": "PARTIAL",
+      "evidence": {
+        "type": "STATISTICAL",
+        "summary": "same sign, p=0.08 (was 0.01), effect halved"
+      },
+      "scope": {
+        "population": "n=300 MTurk"
+      }
+    }
+  ]
+}

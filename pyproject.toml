@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "findcheck"
+version = "0.1.0"
+description = "Reference validator for finding-declaration documents (the experiment-findings verdict layer)."
+readme = "SPEC.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = ["jsonschema>=4.18"]
+authors = [{ name = "patchwright" }]
+keywords = ["findings", "experiment", "schema", "validation", "research", "reproducibility"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering",
+]
+
+[project.scripts]
+findcheck = "findcheck.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/patchwright/findcheck"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+findcheck = ["schema.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

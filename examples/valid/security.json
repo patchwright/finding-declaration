@@ -1,0 +1,27 @@
+{
+  "$schema": "https://raw.githubusercontent.com/patchwright/finding-declaration/v0.1/schema.json",
+  "experiment": "demo",
+  "findings": [
+    {
+      "finding_id": "ecg_reentrancy",
+      "claim": "Reentrancy allows fund drain via callback ordering.",
+      "verdict": "CONFIRMED",
+      "evidence": {
+        "type": "POC",
+        "summary": "PoC drains 100% of pool"
+      },
+      "scope": {
+        "protocol": "ECG",
+        "version": "v1.2"
+      },
+      "severity": "HIGH",
+      "localization": {
+        "file": "Vault.sol",
+        "line_range": [
+          140,
+          167
+        ]
+      }
+    }
+  ]
+}

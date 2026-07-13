@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/patchwright/finding-declaration/v0.1/schema.json",
+  "title": "Finding Declaration",
+  "description": "Machine-readable declaration of experiment findings (the verdict layer). v0.1 draft. See SPEC.md.",
+  "type": "object",
+  "required": ["$schema", "findings"],
+  "additionalProperties": true,
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "const": "https://raw.githubusercontent.com/patchwright/finding-declaration/v0.1/schema.json",
+      "description": "Self-declaring schema version. REQUIRED."
+    },
+    "experiment": {
+      "type": "string",
+      "description": "Identifier of the producing experiment (provenance context). OPTIONAL."
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "RFC 3339 timestamp (provenance). RECOMMENDED."
+    },
+    "findings": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/finding" }
+    }
+  },
+  "$defs": {
+    "finding": {
+      "type": "object",
+      "required": ["finding_id", "claim", "verdict", "evidence", "scope"],
+      "additionalProperties": true,
+      "properties": {
+        "finding_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$",
+          "description": "Stable, citable, document-unique identifier. REQUIRED."
+        },
+        "claim": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S",
+          "description": "The declarative assertion. REQUIRED, non-empty, non-whitespace-only."
+        },
+        "verdict": {
+          "enum": ["CONFIRMED", "PARTIAL", "REFUTED", "INCONCLUSIVE", "UNDECIDABLE"],
+          "description": "Truth-status of the claim. REQUIRED, exactly one."
+        },
+        "evidence": { "$ref": "#/$defs/evidence" },
+        "scope": {
+          "type": "object",
+          "minProperties": 1,
+          "description": "Conditions under which the claim holds. REQUIRED, non-empty."
+        },
+        "hypothesis": { "type": "string", "description": "Pre-stated prediction (OPTIONAL; absent for exploratory/formal findings)." },
+        "effect_size": {
+          "description": "Continuous magnitude. OPTIONAL.",
+          "oneOf": [ { "type": "number" }, { "type": "object" } ]
+        },
+        "severity": { "enum": ["HIGH", "MEDIUM", "LOW"], "description": "Categorical magnitude (security). OPTIONAL." },
+        "confidence": {
+          "type": "object",
+          "description": "Uncertainty quantification. OPTIONAL.",
+          "properties": {
+            "ci": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 },
+            "p_value": { "type": "number", "minimum": 0, "maximum": 1 },
+            "n": { "type": "integer", "minimum": 0 },
+            "test_type": { "type": "string" },
+            "rating": { "type": "integer", "minimum": 1, "maximum": 5 }
+          }
+        },
+        "comparison": { "type": "string", "description": "finding_id of a baseline. OPTIONAL." },
+        "mechanism": {
+          "description": "Causal/mechanistic model. OPTIONAL.",
+          "oneOf": [ { "type": "string" }, { "type": "object" } ]
+        },
+        "localization": {
+          "type": "object",
+          "description": "Where the finding lives. OPTIONAL.",
+          "properties": {
+            "file": { "type": "string" },
+            "line_range": { "type": "array", "items": { "type": "integer" }, "minItems": 2, "maxItems": 2 },
+            "module": { "type": "string" },
+            "theorem": { "type": "string" }
+          }
+        },
+        "falsification_criterion": { "type": "string", "description": "What would overturn this verdict. OPTIONAL." },
+        "implication": { "type": "string", "description": "What to do with this finding. OPTIONAL." }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["type", "summary"],
+      "additionalProperties": true,
+      "properties": {
+        "type": {
+          "enum": ["NUMERIC", "STATISTICAL", "PROOF", "POC", "QUALITATIVE", "CITATION"],
+          "description": "Evidence form. REQUIRED. The form varies by domain; presence does not."
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S",
+          "description": "One-line human-readable digest. REQUIRED, non-empty, non-whitespace-only."
+        },
+        "artifact": {
+          "type": "string",
+          "description": "Reference (path/URI/metric key) to backing artifact. RECOMMENDED."
+        }
+      }
+    }
+  }
+}

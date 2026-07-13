@@ -1,0 +1,31 @@
+{
+  "$schema": "https://raw.githubusercontent.com/patchwright/finding-declaration/v0.1/schema.json",
+  "experiment": "demo",
+  "findings": [
+    {
+      "finding_id": "drug_x_os",
+      "claim": "Drug X reduces all-cause mortality vs placebo.",
+      "verdict": "CONFIRMED",
+      "evidence": {
+        "type": "STATISTICAL",
+        "summary": "HR 0.72 favoring Drug X"
+      },
+      "scope": {
+        "population": "adults 18-65",
+        "endpoint": "all-cause mortality",
+        "n": 480
+      },
+      "hypothesis": "Drug X superior",
+      "effect_size": 0.72,
+      "confidence": {
+        "ci": [
+          0.58,
+          0.89
+        ],
+        "p_value": 0.0008,
+        "n": 480,
+        "test_type": "Cox PH"
+      }
+    }
+  ]
+}

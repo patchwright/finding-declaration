@@ -1,0 +1,17 @@
+{
+  "experiment": "t",
+  "findings": [
+    {
+      "finding_id": "x",
+      "claim": "y",
+      "verdict": "CONFIRMED",
+      "evidence": {
+        "type": "NUMERIC",
+        "summary": "s"
+      },
+      "scope": {
+        "a": "b"
+      }
+    }
+  ]
+}

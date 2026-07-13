@@ -1,0 +1,18 @@
+{
+  "$schema": "https://raw.githubusercontent.com/patchwright/finding-declaration/v0.1/schema.json",
+  "experiment": "demo",
+  "findings": [
+    {
+      "finding_id": "CH_independence",
+      "claim": "The Continuum Hypothesis is independent of ZFC.",
+      "verdict": "UNDECIDABLE",
+      "evidence": {
+        "type": "PROOF",
+        "summary": "Godel 1940 + Cohen 1963"
+      },
+      "scope": {
+        "axioms": "ZFC"
+      }
+    }
+  ]
+}

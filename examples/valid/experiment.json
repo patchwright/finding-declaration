@@ -1,0 +1,21 @@
+{
+  "$schema": "https://raw.githubusercontent.com/patchwright/finding-declaration/v0.1/schema.json",
+  "experiment": "demo",
+  "findings": [
+    {
+      "finding_id": "companion_H1",
+      "claim": "Companion ceiling is monotone in allocation under fixed L1 budget.",
+      "verdict": "CONFIRMED",
+      "evidence": {
+        "type": "NUMERIC",
+        "summary": "mean_fraction_bound_satisfied = 1.0 (16 seeds)",
+        "artifact": "results/companion.json#H1"
+      },
+      "scope": {
+        "environment": "CartPole-v1",
+        "budget": "fixed L1"
+      },
+      "hypothesis": "H1"
+    }
+  ]
+}

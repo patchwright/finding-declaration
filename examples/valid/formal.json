@@ -1,0 +1,19 @@
+{
+  "$schema": "https://raw.githubusercontent.com/patchwright/finding-declaration/v0.1/schema.json",
+  "experiment": "demo",
+  "findings": [
+    {
+      "finding_id": "MarkovianWall_mem_monotone",
+      "claim": "Memory K>1 detects transient attacks at strictly lower threshold than K=1.",
+      "verdict": "CONFIRMED",
+      "evidence": {
+        "type": "PROOF",
+        "summary": "Lean proof, 0 sorry",
+        "artifact": "formal/lean/EvoEcos/MarkovianWall.lean"
+      },
+      "scope": {
+        "axioms": "standard"
+      }
+    }
+  ]
+}

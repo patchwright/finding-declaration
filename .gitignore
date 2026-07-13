@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.benchmarks/
+*.egg-info/
+build/
+dist/
+# evoecos-specific dogfood artifacts (proof lives in working dir, not the standard)
+evoecos_*.json
+migrate_evoecos.py
+query_findings.py

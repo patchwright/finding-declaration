@@ -1,0 +1,17 @@
+{
+  "$schema": "https://raw.githubusercontent.com/patchwright/finding-declaration/v0.1/schema.json",
+  "experiment": "demo",
+  "findings": [
+    {
+      "finding_id": "x",
+      "claim": "y",
+      "evidence": {
+        "type": "NUMERIC",
+        "summary": "s"
+      },
+      "scope": {
+        "a": "b"
+      }
+    }
+  ]
+}
