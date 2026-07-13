@@ -5,7 +5,6 @@ __pycache__/
 *.egg-info/
 build/
 dist/
-# evoecos-specific dogfood artifacts (proof lives in working dir, not the standard)
+# evoecos-specific dogfood (regenerable, hardcoded paths) — not part of the standard
 evoecos_*.json
 migrate_evoecos.py
-query_findings.py
