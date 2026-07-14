@@ -8,3 +8,5 @@ dist/
 # evoecos-specific dogfood (regenerable, hardcoded paths) — not part of the standard
 evoecos_*.json
 migrate_evoecos.py
+# internal working plan — local coordination artifact, not part of the standard
+PLAN.md
